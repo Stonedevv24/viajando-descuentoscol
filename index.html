@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Servicios de paquetería y envíos nacionales rápidos y seguros.">
+    <title>Paquetería Express - Envíos Nacionales</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Estilo Header */
+        header {
+            background: #0a4d8d;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 30px;
+            animation: fadeIn 3s ease-out;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: pulse 6s infinite;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0); opacity: 1; }
+            50% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(0); opacity: 1; }
+        }
+
+        /* Estilos del Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #1c6fa7;
+            padding: 20px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #0a4d8d;
+        }
+
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Contenido principal */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #1c6fa7;
+            font-weight: 700;
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-item {
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #0a4d8d;
+            margin-bottom: 15px;
+        }
+
+        .service-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .service-description {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Estilo de tarifas */
+        .tariffs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+
+        .tariffs-table th, .tariffs-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tariffs-table th {
+            background-color: #0a4d8d;
+            color: #fff;
+        }
+
+        .tariffs-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Formulario de contacto */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .contact-form button {
+            padding: 15px;
+            background-color: #0a4d8d;
+            color: white;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #1c6fa7;
+        }
+
+        footer {
+            background-color: #0a4d8d;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Paquetería Express</h1>
+        <p>Envíos Nacionales Rápidos y Seguros</p>
+    </header>
+
+    <nav>
+        <a href="#servicios">Servicios</a>
+        <a href="#tarifas">Tarifas</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="container">
+
+        <section id="servicios" class="section">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="services-list">
+                <div class="service-item">
+                    <div class="service-icon">🚚</div>
+                    <h3 class="service-title">Envío Rápido</h3>
+                    <p class="service-description">Entrega en menos de 24 horas, asegurando que tu paquete llegue a tiempo y en perfectas condiciones.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">📦</div>
+                    <h3 class="service-title">Envío Económico</h3>
+                    <p class="service-description">Ideal para paquetes no urgentes. Una opción de bajo costo para aquellos que buscan ahorrar.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🔒</div>
+                    <h3 class="service-title">Seguro de Envío</h3>
+                    <p class="service-description">Protege tus envíos con nuestra opción de seguro, garantizando la cobertura ante daños o pérdida.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tarifas" class="section">
+            <h2 class="section-title">Tarifas de Envío</h2>
+            <table class="tariffs-table">
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Tarifa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Envío Urgente</td>
+                        <td>$50</td>
+                    </tr>
+                    <tr>
+                        <td>Envío Estándar</td>
+                        <td>$30</td>
+                    </tr>
+                    <tr>
+                        <td>Envío Económico</td>
+                        <td>$20</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="contacto" class="section">
+            <h2 class="section-title">Contáctanos</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Tu Nombre" required>
+                <input type="email" placeholder="Tu Correo Electrónico" required>
+                <textarea placeholder="Tu Mensaje" rows="5" required></textarea>
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Paquetería Express | Todos los derechos reservados</p>
+    </footer>
+
+</body>
+</html>
